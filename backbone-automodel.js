@@ -1,4 +1,4 @@
-(function($){
+(function($) {
 
     window.Backbone.AutoModel = Backbone.Model.extend({
         getForTemplate: function(attribute) {

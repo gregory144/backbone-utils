@@ -3,23 +3,21 @@
     var ListView = Backbone.View.extend({
         initialize: function() {
             _.bindAll(this, 'render');
-
             this.render();
         },
         render: function() {
-            var el = $(this.el);
-            el.html('');
-            el.append('Value: ');
-            el.append(this.model.getForTemplate('value'));
+            $(this.el).html('Value: ' + this.model.getForTemplate('value'));
         }
     });
 
-    var testModel = new Backbone.AutoModel({value: 1});
+    var testModel1 = new Backbone.AutoModel({value: 1});
     var testModel2 = new Backbone.AutoModel({value: 1});
-    var listView = new ListView({ model: testModel, el: $('#main1') });
-    var listView = new ListView({ model: testModel2, el: $('#main2') });
+    var listView1 = new ListView({ model: testModel1, el: $('#main1') });
+    var listView2 = new ListView({ model: testModel2, el: $('#main2') });
+
     setInterval(function() {
-        testModel.set('value', testModel.get('value') + 1);
-        testModel2.set('value', testModel.get('value') * 2);
+        testModel1.set('value', testModel1.get('value') + 1);
+        testModel2.set('value', testModel2.get('value') * 2);
     }, 1000);
+
 })(jQuery);
