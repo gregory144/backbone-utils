@@ -67,12 +67,20 @@ Handlebars.registerHelper('each', function(context, options) {
 });
 
 Handlebars.registerHelper('if', function(context, options) {
+  console.log('in handlebars if', this, context, options);
   var type = toString.call(context);
+  console.log(type, functionType);
   if(type === functionType) { context = context.call(this); }
+  console.log(context);
 
   if(!context || Handlebars.Utils.isEmpty(context)) {
+    console.log('a', options.inverse);
     return options.inverse(this);
   } else {
+    for (var x in options) {
+        console.log('in options: ', typeof x, x, options[x]);
+    }
+    console.log('options:', typeof options, 'options.fn:', typeof(options.fn), 'applied:', options.fn(this), options.data);
     return options.fn(this);
   }
 });

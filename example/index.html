@@ -20,7 +20,12 @@
     </div>
 
     <div id="view-2" style="display:none">
-        <p>View 2: {{auto "value"}}</p>
+        {{#unless displayValue}}
+        <p>unless</p>
+        {{/unless}}
+        {{#if displayValue}}
+        <p>View 2: {{value}}</p>
+        {{/if}}
     </div>
 
     <script src="js/jquery-1.7.1.js"></script>

@@ -58,12 +58,8 @@ if (Handlebars) {
             }
         },
         render: function() {
-            var context;
-            if (this.model.toJSONForTemplate) {
-                context = this.model.toJSONForTemplate();
-            } else {
-                context = this.model.toJSON();
-            }
+            var context = this.model.toJSON();
+            context['_model'] = this.model;
             $(this.el).html(this.template(context));
         }
     });
